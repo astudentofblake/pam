@@ -5,6 +5,7 @@ package pam
 #cgo CFLAGS: -Wall -Wno-unused-variable -std=c99
 #cgo LDFLAGS: -ldl -lpam
 
+#define _GNU_SOURCE
 #include <dlfcn.h>
 #include <security/pam_appl.h>
 #include <stdlib.h>
