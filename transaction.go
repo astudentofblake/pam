@@ -5,6 +5,7 @@ package pam
 #cgo CFLAGS: -Wall -Wno-unused-variable -std=c99
 #cgo LDFLAGS: -ldl -lpam
 
+#define _GNU_SOURCE
 #include <dlfcn.h>
 #include <security/pam_appl.h>
 #include <stdlib.h>
@@ -16,6 +17,10 @@ package pam
 #include <limits.h>
 #define PAM_BINARY_PROMPT INT_MAX
 #define BINARY_PROMPT_IS_SUPPORTED 0
+#endif
+
+#ifndef RTLD_NEXT
+# define RTLD_NEXT      ((void *) -1l)
 #endif
 
 void init_pam_conv(struct pam_conv *conv, uintptr_t);
